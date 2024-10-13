@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Inventario del Local</h1>
+<table>
+    <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+    </tr>
+    {% for producto in productos %}
+    <tr>
+        <td>{{ producto['nombre_producto'] }}</td>
+        <td>{{ producto['precio'] }} USD</td>
+        <td>{{ producto['cantidad'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

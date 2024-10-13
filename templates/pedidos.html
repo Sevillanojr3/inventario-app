@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Vincula el archivo CSS externo -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pedidos.css') }}">
+
+<div class="menu-container">
+    <h2 class="menu-title">Nuestro Menú Delicioso</h2>
+
+    <form method="POST" action="{{ url_for('pedidos') }}" class="menu-form">
+        <label for="producto_id">Elige tu plato favorito:</label>
+        <select name="producto_id" required>
+            {% for producto in productos %}
+            <div class="product-card">
+                <option value="{{ producto['id_producto'] }}">
+                    <span class="product-name">{{ producto['nombre_producto'] }}</span> - 
+                    <span class="product-price">${{ producto['precio'] }}</span>
+                    <span class="product-stock">(Disponibles: {{ producto['cantidad'] }})</span>
+                </option>
+            </div>
+            {% endfor %}
+        </select>
+        
+        <label for="cantidad">¿Cuántos deseas?</label>
+        <input type="number" name="cantidad" min="1" required>
+        
+        <button type="submit">¡Hacer mi Pedido!</button>
+    </form>
+</div>
+
+{% endblock %}

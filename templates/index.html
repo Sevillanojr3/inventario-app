@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Vincula el archivo CSS externo -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bienvenida.css') }}">
+
+{% if 'loggedin' in session %}
+    <div class="bienvenida">
+        <h1>¡Bienvenido a Inventario App!</h1>
+        <p>Gestiona tu inventario de manera eficiente y realiza pedidos con facilidad. ¡Tu negocio al siguiente nivel!</p>
+    </div>
+
+    <div class="opciones-principales">
+        <div class="opcion">
+            <i class="fas fa-boxes fa-4x"></i>
+            <h2>Ver Inventario</h2>
+            <p>Revisa el stock actual de tus productos y mantén todo bajo control.</p>
+            <a href="{{ url_for('index') }}" class="boton-principal">Ir al Inventario</a>
+        </div>
+        
+        <div class="opcion">
+            <i class="fas fa-shopping-cart fa-4x"></i>
+            <h2>Realizar Pedido</h2>
+            <p>Haz un nuevo pedido de productos de forma rápida y sencilla.</p>
+            <a href="{{ url_for('pedidos') }}" class="boton-principal">Hacer Pedido</a>
+        </div>
+    </div>
+
+    <div class="ultimos-pedidos">
+        <h2>Últimos Pedidos Realizados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Producto Ejemplo</td>
+                    <td>5</td>
+                    <td>2023-05-10</td>
+                </tr>
+                <tr>
+                    <td>Otro Producto</td>
+                    <td>10</td>
+                    <td>2023-05-09</td>
+                </tr>
+                <tr>
+                    <td>Producto Nuevo</td>
+                    <td>3</td>
+                    <td>2023-05-08</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="bienvenida">
+        <h1>¡Bienvenido a Inventario App!</h1>
+        <p>Por favor, inicia sesión o regístrate para acceder a todas las funcionalidades.</p>
+    </div>
+    <div class="opciones-principales">
+        <div class="opcion">
+            <i class="fas fa-sign-in-alt fa-4x"></i>
+            <h2>Iniciar Sesión</h2>
+            <p>Accede a tu cuenta para gestionar tu inventario.</p>
+            <a href="{{ url_for('login') }}" class="boton-principal">Iniciar Sesión</a>
+        </div>
+        <div class="opcion">
+            <i class="fas fa-user-plus fa-4x"></i>
+            <h2>Registrarse</h2>
+            <p>Crea una nueva cuenta para comenzar a usar Inventario App.</p>
+            <a href="{{ url_for('register') }}" class="boton-principal">Registrarse</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario App - Gestión Eficiente de Inventarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="description" content="Inventario App: La solución profesional para la gestión eficiente de inventarios y pedidos en su negocio.">
+    <style>
+        .bienvenida {
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .bienvenida h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .bienvenida p {
+            font-size: 1.2rem;
+        }
+
+        .opciones-principales {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+        }
+
+        .opcion {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 1rem;
+        }
+
+        .opcion:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .opcion i {
+            color: #2193b0;
+            margin-bottom: 1rem;
+        }
+
+        .opcion h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .opcion p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .boton-principal {
+            background-color: #2193b0;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .boton-principal:hover {
+            background-color: #1c7a94;
+        }
+
+        .ultimos-pedidos {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .ultimos-pedidos h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .ultimos-pedidos table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        .ultimos-pedidos th, .ultimos-pedidos td {
+            padding: 1rem;
+            text-align: left;
+            background-color: white;
+        }
+
+        .ultimos-pedidos th {
+            background-color: #2193b0;
+            color: white;
+        }
+
+        .ultimos-pedidos tr {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .ultimos-pedidos tr:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .bienvenida h1 {
+                font-size: 2rem;
+            }
+
+            .bienvenida p {
+                font-size: 1rem;
+            }
+
+            .opcion {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .ultimos-pedidos {
+                padding: 1rem;
+            }
+
+            .ultimos-pedidos th, .ultimos-pedidos td {
+                padding: 0.5rem;
+            }
+
+            .navegacion-principal {
+                flex-direction: column;
+            }
+
+            .menu-izquierda {
+                order: 1;
+                margin-bottom: 1rem;
+            }
+
+            .menu-derecha {
+                order: 2;
+            }
+        }
+
+        /* Modificaciones para el menú */
+        .navegacion-principal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-izquierda {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .menu-derecha {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .boton-salir {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-elegante">
+        <div class="logo-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/3170/3170733.png" alt="Logo Inventario App" class="logo-imagen">
+            <h1 class="titulo-principal">Inventario App</h1>
+        </div>
+        <nav class="navegacion-principal" aria-label="Navegación principal">
+            <ul class="menu-izquierda">
+                {% if session.get('loggedin') %}
+                    <li><a href="{{ url_for('index') }}" class="boton-nav" title="Ir a la página de inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="{{ url_for('pedidos') }}" class="boton-nav" title="Gestionar pedidos"><i class="fas fa-shopping-cart"></i> Pedidos</a></li>
+                    {% if session.get('id_rol') == 1 %}
+                        <li><a href="{{ url_for('admin_inventario') }}" class="boton-nav" title="Administrar inventario"><i class="fas fa-boxes"></i> Inventario</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+            {% if session.get('loggedin') %}
+            <ul class="menu-derecha">
+                <li class="usuario-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span>{{ session.get('nombre_usuario') }}</span>
+                    {% if session.get('id_rol') == 1 %}
+                        <span class="badge admin-badge">Administrador</span>
+                    {% endif %}
+                    <a href="{{ url_for('logout') }}" class="boton-nav boton-salir boton-pequeno" title="Cerrar sesión"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                </li>
+            </ul>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        {% block content %}
+        <!-- El contenido específico de cada página se insertará aquí -->
+        {% endblock %}
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="footer-content">
+            <p>&copy; {{ current_year }} Inventario App. Todos los derechos reservados.</p>
+            <nav class="footer-nav">
+                <a href="#" title="Términos y condiciones">Términos y Condiciones</a> |
+                <a href="#" title="Política de privacidad">Política de Privacidad</a> |
+                <a href="#" title="Contacto">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Google Analytics o cualquier otro script de análisis -->
+    <script>
+        // Código de seguimiento de Google Analytics
+    </script>
+</body>
+</html>

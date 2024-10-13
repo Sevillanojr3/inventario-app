@@ -1,0 +1,113 @@
+.menu-container {
+    background: url('https://example.com/restaurant-bg.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.menu-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.menu-form {
+    background: rgba(255,255,255,0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.menu-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.menu-form select, .menu-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.menu-form button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.menu-form button:hover {
+    background: #ff4757;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-name {
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.product-price {
+    color: #ff6b6b;
+}
+
+.product-stock {
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+@media (max-width: 768px) {
+    .menu-container {
+        padding: 2rem 1rem;
+    }
+    .menu-title {
+        font-size: 2.5rem;
+    }
+    .menu-form {
+        padding: 1.5rem;
+    }
+    .menu-form button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-title {
+        font-size: 2rem;
+    }
+    .menu-form {
+        padding: 1rem;
+    }
+    .menu-form select, .menu-form input {
+        font-size: 0.9rem;
+    }
+    .menu-form button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}

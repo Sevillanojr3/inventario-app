@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<!-- Vincula el archivo CSS externo -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+<div class="login-page">
+    <div class="login-image">
+        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Imagen de restaurante" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="login-form-container">
+        <h2>Iniciar sesión</h2>
+        <form id="login-form" class="login-form">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <p class="register-link">¿No tienes cuenta? <a href="{{ url_for('register') }}">Regístrate aquí</a></p>
+        <p id="error-message" class="error-message" style="display: none;"></p>
+        <p id="success-message" class="success-message" style="display: none;">Inicio de sesión exitoso</p>
+    </div>
+</div>
+
+<!-- Asegúrate de que el archivo JavaScript se cargue correctamente -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<style>
+    .login-page {
+        display: flex;
+        height: 100vh;
+        background-color: #f0f4f8;
+    }
+    .login-image {
+        flex: 1;
+        overflow: hidden;
+    }
+    .login-form-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #6dd5ed, #2193b0);
+        color: white;
+    }
+    .login-form-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-form label {
+        align-self: flex-start;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+    }
+    .login-form input {
+        width: 100%;
+        padding: 0.8rem;
+        margin-top: 0.5rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+    }
+    .login-form button {
+        background-color: #ffffff;
+        color: #2193b0;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .login-form button:hover {
+        background-color: #f0f0f0;
+    }
+    .register-link {
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    .register-link a {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+    .error-message {
+        color: #ff6b6b;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .success-message {
+        color: #51cf66;
+        text-align: center;
+        margin-top: 1rem;
+    }
+</style>
+{% endblock %}

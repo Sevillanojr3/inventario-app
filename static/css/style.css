@@ -1,0 +1,131 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.header-elegante {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.logo-imagen {
+    width: 50px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.titulo-principal {
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+.navegacion-principal ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.boton-nav {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    margin: 0.25rem;
+    display: inline-block;
+}
+
+.boton-nav:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.boton-salir {
+    background-color: #e74c3c;
+}
+
+.boton-entrar, .boton-registro {
+    background-color: #27ae60;
+}
+
+.contenido-principal {
+    padding: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.mensajes-container {
+    margin-bottom: 1rem;
+}
+
+.mensaje {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.pie-pagina {
+    background-color: #2193b0;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .header-elegante {
+        padding: 0.5rem;
+    }
+
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo-imagen {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .titulo-principal {
+        font-size: 1.2rem;
+    }
+
+    .navegacion-principal ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boton-nav {
+        width: 100%;
+        text-align: center;
+        margin: 0.25rem 0;
+    }
+}
